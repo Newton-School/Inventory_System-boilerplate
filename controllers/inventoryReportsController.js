@@ -2,8 +2,8 @@ const Product = require('../models/productModel');
 
 exports.getLowInventoryProducts = async (req, res) => {
   try {
-    const lowInventoryProducts = await Product.find({ quantity: { $lt: 10 } });
-    res.json(lowInventoryProducts);
+    // TODO: Fetch products with quantity less than 10 from the database
+    // TODO: Send the low inventory products as a JSON response
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
@@ -12,15 +12,8 @@ exports.getLowInventoryProducts = async (req, res) => {
 
 exports.getTotalInventoryValue = async (req, res) => {
   try {
-    const totalValue = await Product.aggregate([
-      {
-        $group: {
-          _id: null,
-          totalValue: { $sum: { $multiply: ['$quantity', '$price'] } },
-        },
-      },
-    ]);
-    res.json({ totalValue: totalValue[0].totalValue });
+    // TODO: Calculate the total value of the entire inventory using aggregation
+    // TODO: Send the total inventory value as a JSON response
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
